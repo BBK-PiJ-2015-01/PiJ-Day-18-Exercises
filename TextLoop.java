@@ -22,7 +22,8 @@ public class TextLoop implements Runnable {
 		
 //		int cores = Runtime.getRuntime().availableProcessors();
 //		Executor executor = new ThreadPoolExecutor(4, cores, 10, TimeUnit.MILLISECONDS,  new  LinkedBlockingQueue<Runnable>() );
-		ExecutorService executor = Executors.newCachedThreadPool();
+//		ExecutorService executor = Executors.newCachedThreadPool();
+		Executor executor = new ExecutorImpl();
 		if (args.length < 1 || (!args[0].equals("0") && !args[0].equals("1"))) {
 			System.out.println("USAGE: java TextLoop <mode>");
 			System.out.println("     mode 0: without threads");
@@ -42,6 +43,6 @@ public class TextLoop implements Runnable {
 //				t.start();
 			}
 		}
-		executor.shutdown();
+//		executor.shutdown();
 	}
 }
