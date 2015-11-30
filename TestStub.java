@@ -23,25 +23,20 @@ public class TestStub {
 	}
 	
 	@Test
-	public void twoUsers() {
+	public void multipleUsers() {
 		
-		System.out.println("Run two user application");
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				System.out.println("Start up a new user");
-				RUIUser user = new RUIUser();
-				user.startUser(instance);
-			}
-		}).start();
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				System.out.println("Start up a new user");
-				RUIUser user = new RUIUser();
-				user.startUser(instance);
-			}
-		}).start();
+		System.out.println("Run multiple user application");
+		final int limit = 3;
+		for(int i = 0; i < limit; i++) {
+			new Thread(new Runnable() {
+				@Override
+				public void run() {
+	//				System.out.println("Start up a new user");
+					RUIUser user = new RUIUser();
+					user.startUser(instance);
+				}
+			}).start();
+		}
 		
 		try { 
 			Thread.sleep(10000); 

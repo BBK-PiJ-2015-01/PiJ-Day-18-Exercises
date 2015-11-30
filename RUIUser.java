@@ -1,4 +1,5 @@
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.*;
 import java.util.*;
 
 public class RUIUser {
@@ -12,7 +13,7 @@ public class RUIUser {
 	//
 	private static int userNum = 0;
 	//
-	int userId;
+	private int userId;
 	
 	public RUIUser() {
 		this(TOLERANCE_MS);
@@ -29,7 +30,6 @@ public class RUIUser {
 		Random r = new Random();
 		
 		for (int i = 0; i < NUMBER_OF_REQUESTS; i++ ) {			
-//			System.out.println("User task " + i);
 			if (app.getMaxWait() > tolerance) {
 				System.out.println(EXCEEDS_MAX_WAIT_TIME_MSG);
 				try {
